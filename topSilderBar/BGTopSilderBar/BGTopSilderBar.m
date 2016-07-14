@@ -180,6 +180,9 @@ static NSString* ALCELLID = @"BGTopSilderBarCell";
     if (![@"contentOffset" isEqualToString:keyPath])return;
     
     int whichItem=(int)(_contentCollectionView.contentOffset.x/_contentCollectionView.frame.size.width+0.5);
+    
+    if (whichItem >= _items.count)return;
+    
     CGSize titleSize = [global sizeWithText:_items[whichItem] font:BGFont(19.5) maxSize:CGSizeMake(screenW/itemNum, MAXFLOAT)];
     if (whichItem != _currentBarIndex) {
         [self setItemColorFromIndex:_currentBarIndex to:whichItem];
